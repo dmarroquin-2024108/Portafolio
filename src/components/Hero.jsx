@@ -1,125 +1,94 @@
-import { Globe, ArrowUpRight, Download } from 'lucide-react'
-import { FaGithub, FaLinkedin, FaXTwitter } from 'react-icons/fa6'
+import { ArrowDown, Download, Radio } from 'lucide-react'
+import { FaGithub, FaLinkedin } from 'react-icons/fa6'
 import { profile, stats } from '../data/portafolio.js'
-import TerminalFrame from './TerminalIframe.jsx'
-import ProfilePhoto from './ProfilePhoto'
+import ProfilePhoto from './ProfilePhoto.jsx'
 import useTypewriter from '../hooks/useTypewriter.js'
-
-const socialIcons = {
-    github: FaGithub,
-    linkedin: FaLinkedin,
-    twitter: FaXTwitter,
-    website: Globe
-}
+import { Reveal } from './Reveal.jsx';
 
 export default function Hero() {
-    const { displayed: typedName, done: typingPaused } = useTypewriter(profile.name, {
-        typeSpeed: 90,
-        deleteSpeed: 45,
+    const { displayed: typedRole, done: typingPaused } = useTypewriter(profile.role, {
+        typeSpeed: 55,
+        deleteSpeed: 30,
         startDelay: 400,
-        pauseAfterType: 1800,
+        pauseAfterType: 2200,
         pauseAfterDelete: 500,
         loop: true
     })
 
     return (
-        <section id="home" className="relative pt-28 pb-20 scroll-mt-24">
+        <section id="home" className="relative pt-28 pb-24 scroll-mt-24 overflow-hidden">
             <div
-                className="pointer-events-none absolute inset-0 bg-grid bg-grid opacity-40 [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,black,transparent)]"
+                className="pointer-events-none absolute inset-0 bg-grid bg-grid opacity-60 [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,black,transparent)]"
                 aria-hidden="true"
             />
-            <div className="relative grid lg:grid-cols-[1.1fr,0.9fr] gap-10 items-start">
+            <div
+                className="pointer-events-none absolute -top-40 right-0 h-96 w-96 rounded-full bg-cyan/10 blur-[120px]"
+                aria-hidden="true"
+            />
+
+            <div className="relative grid lg:grid-cols-[1.1fr,0.9fr] gap-12 items-center">
                 <div>
                     {profile.available && (
-                        <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1 mb-6">
-                            <span className="relative flex h-2 w-2">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-mint opacity-75" />
-                                <span className="relative inline-flex h-2 w-2 rounded-full bg-mint" />
+                        <div className="relative inline-flex items-center gap-2.5 border border-pitch/70 bg-pitch/10 pl-2 pr-4 py-1.5 mb-6 [clip-path:polygon(12px_0,100%_0,100%_100%,0_100%,0_12px)]">
+                            <span className="absolute inset-0 -z-10 animate-scan bg-gradient-to-r from-transparent via-emerald-400/10 to-transparent" aria-hidden="true" />
+                            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-400/15 animate-pulse-glow-pitch">
+                                <Radio className="h-3 w-3 text-emerald-400" />
                             </span>
-                            <span className="font-mono text-xs text-muted">Disponible para trabajar</span>
+                            <span className="font-hud text-xs uppercase tracking-[0.2em] text-emerald-300">En cancha · disponible para trabajar</span>
                         </div>
                     )}
+                    <Reveal y={24}>
+                        <p className="font-hud text-cyan text-sm uppercase tracking-[0.3em] mb-3">Bienvenido al terreno de juego</p>
+                        <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-paper text-glow">
+                            {profile.brand}
+                        </h1>
+                        <h2 className="mt-3 min-h-[1.6em] font-hud text-xl sm:text-2xl font-semibold text-cyan-soft">
+                            <span aria-hidden="true">{typedRole}</span>
+                            <span
+                                className={`ml-1 inline-block h-[0.9em] w-[3px] translate-y-[0.1em] bg-cyan align-middle ${typingPaused ? 'animate-pulse' : ''}`}
+                                aria-hidden="true"
+                            />
+                            <span className="sr-only">{profile.role}</span>
+                        </h2>
 
-                    <p className="font-mono text-amber text-sm mb-3">Hola, soy</p>
-                    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-paper text-glow min-h-[1.1em]">
-                        <span aria-hidden="true">{typedName}</span>
-                        <span
-                            className={`ml-1 inline-block h-[0.85em] w-[3px] translate-y-[0.05em] bg-amber align-middle sm:w-[4px] ${typingPaused ? 'animate-pulse' : ''
-                                }`}
-                            aria-hidden="true"
-                        />
-                        <span className="sr-only">{profile.name}</span>
-                    </h1>
-                    <h2 className="mt-2 text-2xl sm:text-3xl font-semibold text-muted">
-                        {profile.role}
-                    </h2>
-                    <p className="mt-6 max-w-xl text-muted leading-relaxed">{profile.summary}</p>
+                        <p className="mt-6 max-w-xl text-muted leading-relaxed italic border-l-2 border-cyan/50 pl-4">
+                            “{profile.tagline}”
+                        </p>
 
-                    <div className="mt-8 flex flex-wrap items-center gap-4">
-                        <a
-                            href="#contact"
-                            className="inline-flex items-center gap-2 rounded-lg bg-amber px-5 py-3 font-mono text-sm font-semibold text-ink hover:bg-amber-soft transition-colors"
-                        >
-                            Contáctame
-                            <ArrowUpRight className="h-4 w-4" />
-                        </a>
-                        <a
-                            href={profile.cvUrl}
-                            className="inline-flex items-center gap-2 rounded-lg border border-border px-5 py-3 font-mono text-sm text-paper hover:border-amber hover:text-amber transition-colors"
-                        >
-                            <Download className="h-4 w-4" />
-                            Descargar CV
-                        </a>
-                    </div>
+                        <div className="mt-8 flex flex-wrap items-center gap-4">
+                            <a
+                                href="#about"
+                                className="group inline-flex items-center gap-2 bg-cyan px-6 py-3 font-hud font-bold uppercase tracking-wide text-navy-deep shadow-glow transition-all hover:shadow-glowLg [clip-path:polygon(0_8px,8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%)]"
+                            >
+                                Explorar Portafolio
+                                <ArrowDown className="h-4 w-4 transition-transform group-hover:translate-y-0.5" />
+                            </a>
 
-                    <div className="mt-8 flex items-center gap-4">
-                        {Object.entries(profile.social).map(([key, url]) => {
-                            const Icon = socialIcons[key]
-                            if (!Icon) return null
-                            return (
-                                <a
-                                    key={key}
-                                    href={url}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    aria-label={key}
-                                    className="text-muted hover:text-amber transition-colors"
-                                >
-                                    <Icon className="h-5 w-5" />
-                                </a>
-                            )
-                        })}
-                    </div>
-                </div>
-
-                <div className="flex flex-col gap-8 lg:pt-2">
-                    <ProfilePhoto />
-
-                    <TerminalFrame title="whoami.js">
-                        <pre className="font-mono text-sm leading-relaxed overflow-x-auto scrollbar-thin">
-                            <code>
-                                <span className="text-muted">{'// perfil'}</span>{'\n'}
-                                <span className="text-[#C792EA]">const</span>{' '}
-                                <span className="text-[#82AAFF]">developer</span> = {'{'}{'\n'}
-                                {'  '}name: <span className="text-mint">'{profile.name}'</span>,{'\n'}
-                                {'  '}role: <span className="text-mint">'{profile.role}'</span>,{'\n'}
-                                {'  '}location: <span className="text-mint">'{profile.location}'</span>,{'\n'}
-                                {'  '}stack: [<span className="text-mint">'React'</span>, <span className="text-mint">'Node.js'</span>, <span className="text-mint">'Tailwind'</span>],{'\n'}
-                                {'  '}available: <span className="text-amber">{String(profile.available)}</span>,{'\n'}
-                                {'}'};
-                            </code>
-                        </pre>
-
-                        <div className="mt-6 grid grid-cols-2 gap-4">
-                            {stats.map((s) => (
-                                <div key={s.label} className="rounded-lg border border-border bg-ink px-4 py-3">
-                                    <p className="font-mono text-xl font-bold text-amber">{s.value}</p>
-                                    <p className="text-xs text-muted mt-1">{s.label}</p>
-                                </div>
-                            ))}
+                            <a
+                                href={profile.cvUrl}
+                                className="inline-flex items-center gap-2 border border-cyan/40 px-6 py-3 font-hud uppercase tracking-wide text-paper transition-colors hover:border-cyan hover:text-cyan [clip-path:polygon(0_8px,8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%)]"
+                            >
+                                <Download className="h-4 w-4" />
+                                Descargar CV
+                            </a>
                         </div>
-                    </TerminalFrame>
+
+                        <div className="mt-8 flex items-center gap-5">
+                            <a href={profile.social.github} target="_blank" rel="noreferrer" aria-label="GitHub" className="text-muted hover:text-cyan transition-colors">
+                                <FaGithub className="h-5 w-5" />
+                            </a>
+                            <a href={profile.social.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn" className="text-muted hover:text-cyan transition-colors">
+                                <FaLinkedin className="h-5 w-5" />
+                            </a>
+                        </div>
+                    </Reveal>
                 </div>
+
+                <Reveal delay={0.15} y={0} className="flex flex-col gap-6 lg:pt-2">
+                    <div className="flex flex-col gap-6 lg:pt-2">
+                        <ProfilePhoto />
+                    </div>
+                </Reveal>
             </div>
         </section>
     )

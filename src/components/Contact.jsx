@@ -1,14 +1,32 @@
 import { useState } from 'react'
-import { Mail, Phone, MapPin, Send, Loader2, CheckCircle2, XCircle } from 'lucide-react'
+import { Mail, MapPin, Send, Loader2, CheckCircle2, XCircle, Briefcase } from 'lucide-react'
+import { FaLinkedin } from 'react-icons/fa6'
 import { profile } from '../data/portafolio.js'
 import SectionHeader from './SectionHeader.jsx'
-import TerminalFrame from './TerminalIframe.jsx'
+import HudPanel from './HudPanel.jsx'
 
 const initialForm = { name: '', email: '', message: '', company: '' }
 
+const networks = [
+    {
+        key: 'linkedin',
+        label: 'LinkedIn',
+        icon: FaLinkedin,
+        url: profile.social.linkedin,
+        description: 'Conecta conmigo profesionalmente'
+    },
+    {
+        key: 'computrabajo',
+        label: 'CompuTrabajo',
+        icon: Briefcase,
+        url: profile.social.computrabajo,
+        description: 'Revisa mi perfil laboral'
+    }
+]
+
 export default function Contact() {
     const [form, setForm] = useState(initialForm)
-    const [status, setStatus] = useState('idle') 
+    const [status, setStatus] = useState('idle')
     const [errorMsg, setErrorMsg] = useState('')
 
     function handleChange(e) {
@@ -39,20 +57,34 @@ export default function Contact() {
 
     return (
         <section id="contact" className="py-20">
-            <SectionHeader index={6} title="Contacto" id="contact" />
+            <SectionHeader index={7} title="Conexión & redes" id="contact" subtitle="Hablemos de tu próximo proyecto" />
+
             <div className="grid lg:grid-cols-2 gap-6">
-                <div className="space-y-4">
-                    <h3 className="text-2xl font-semibold text-paper">Hablemos de tu proyecto</h3>
+                <div className="space-y-6">
                     <p className="text-muted leading-relaxed max-w-md">
                         ¿Tienes una idea, una vacante o simplemente quieres saludar? Escríbeme y te
                         respondo lo antes posible.
                     </p>
+
+                    <div className="grid sm:grid-cols-2 gap-4">
+                        {networks.map(({ key, label, icon: Icon, url, description }) => (
+                            <a
+                                key={key}
+                                href={url}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="group border border-border bg-navy-surface/60 p-4 hover:border-cyan/60 transition-all [clip-path:polygon(0_10px,10px_0,100%_0,100%_calc(100%-10px),calc(100%-10px)_100%,0_100%)]"
+                            >
+                                <Icon className="h-5 w-5 text-cyan mb-2" />
+                                <p className="font-hud font-semibold text-paper text-sm">{label}</p>
+                                <p className="text-xs text-muted mt-1">{description}</p>
+                            </a>
+                        ))}
+                    </div>
+
                     <div className="space-y-3 pt-2">
-                        <a href={`mailto:${profile.email}`} className="flex items-center gap-3 text-sm text-muted hover:text-amber transition-colors">
+                        <a href={`mailto:${profile.email}`} className="flex items-center gap-3 text-sm text-muted hover:text-cyan transition-colors">
                             <Mail className="h-4 w-4" /> {profile.email}
-                        </a>
-                        <a href={`tel:${profile.phone}`} className="flex items-center gap-3 text-sm text-muted hover:text-amber transition-colors">
-                            <Phone className="h-4 w-4" /> {profile.phone}
                         </a>
                         <p className="flex items-center gap-3 text-sm text-muted">
                             <MapPin className="h-4 w-4" /> {profile.location}
@@ -60,10 +92,10 @@ export default function Contact() {
                     </div>
                 </div>
 
-                <TerminalFrame title="contact.js">
-                    <form onSubmit={handleSubmit} className="relative space-y-4 font-mono text-sm">
-                        {/* Honeypot: oculto para personas, visible para bots. No usar display:none
-                (algunos bots lo detectan); se oculta fuera de pantalla en su lugar. */}
+                <HudPanel className="p-6" accent>
+                    <p className="font-hud text-xs uppercase tracking-[0.25em] text-cyan mb-5">Envía un mensaje</p>
+                    <form onSubmit={handleSubmit} className="relative space-y-4">
+                        {/* Honeypot: oculto para personas, visible para bots. */}
                         <div className="absolute -left-[9999px] opacity-0" aria-hidden="true">
                             <label htmlFor="company">No llenar este campo</label>
                             <input
@@ -77,19 +109,19 @@ export default function Contact() {
                             />
                         </div>
                         <div>
-                            <label htmlFor="name" className="block text-xs text-muted mb-1.5">nombre</label>
+                            <label htmlFor="name" className="block font-hud text-xs uppercase tracking-wide text-muted mb-1.5">nombre</label>
                             <input
                                 id="name"
                                 name="name"
                                 required
                                 value={form.name}
                                 onChange={handleChange}
-                                className="w-full rounded-lg border border-border bg-ink px-3 py-2.5 text-paper placeholder:text-muted/60 focus:border-amber outline-none"
+                                className="w-full border border-border bg-navy-deep px-3 py-2.5 text-paper placeholder:text-muted/50 focus:border-cyan outline-none"
                                 placeholder="Ada Lovelace"
                             />
                         </div>
                         <div>
-                            <label htmlFor="email" className="block text-xs text-muted mb-1.5">email</label>
+                            <label htmlFor="email" className="block font-hud text-xs uppercase tracking-wide text-muted mb-1.5">email</label>
                             <input
                                 id="email"
                                 type="email"
@@ -97,12 +129,12 @@ export default function Contact() {
                                 required
                                 value={form.email}
                                 onChange={handleChange}
-                                className="w-full rounded-lg border border-border bg-ink px-3 py-2.5 text-paper placeholder:text-muted/60 focus:border-amber outline-none"
+                                className="w-full border border-border bg-navy-deep px-3 py-2.5 text-paper placeholder:text-muted/50 focus:border-cyan outline-none"
                                 placeholder="ada@ejemplo.com"
                             />
                         </div>
                         <div>
-                            <label htmlFor="message" className="block text-xs text-muted mb-1.5">mensaje</label>
+                            <label htmlFor="message" className="block font-hud text-xs uppercase tracking-wide text-muted mb-1.5">mensaje</label>
                             <textarea
                                 id="message"
                                 name="message"
@@ -110,7 +142,7 @@ export default function Contact() {
                                 rows={4}
                                 value={form.message}
                                 onChange={handleChange}
-                                className="w-full rounded-lg border border-border bg-ink px-3 py-2.5 text-paper placeholder:text-muted/60 focus:border-amber outline-none resize-none"
+                                className="w-full border border-border bg-navy-deep px-3 py-2.5 text-paper placeholder:text-muted/50 focus:border-cyan outline-none resize-none"
                                 placeholder="Cuéntame sobre tu proyecto..."
                             />
                         </div>
@@ -118,7 +150,7 @@ export default function Contact() {
                         <button
                             type="submit"
                             disabled={status === 'loading'}
-                            className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-amber px-5 py-3 font-semibold text-ink hover:bg-amber-soft transition-colors disabled:opacity-60"
+                            className="w-full inline-flex items-center justify-center gap-2 bg-cyan px-5 py-3 font-hud font-bold uppercase tracking-wide text-navy-deep shadow-glowSoft hover:shadow-glow transition-all disabled:opacity-60 [clip-path:polygon(0_8px,8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%)]"
                         >
                             {status === 'loading' ? (
                                 <>
@@ -132,7 +164,7 @@ export default function Contact() {
                         </button>
 
                         {status === 'success' && (
-                            <p className="flex items-center gap-2 text-mint text-xs">
+                            <p className="flex items-center gap-2 text-cyan text-xs">
                                 <CheckCircle2 className="h-4 w-4" /> Mensaje enviado. ¡Gracias!
                             </p>
                         )}
@@ -143,7 +175,7 @@ export default function Contact() {
                             </p>
                         )}
                     </form>
-                </TerminalFrame>
+                </HudPanel>
             </div>
         </section>
     )

@@ -1,29 +1,32 @@
-import maradonaPhoto from '../assets/maradona.jpg';
-import CV from '../assets/CV-Daniel-Alejandro-Marroquín-Zabala.pdf'
+import maradonaPhoto from '../assets/maradona.jpg'
+import CV from '../assets/CV-Daniel-Marroquin-Zabala.pdf'
 
 export const profile = {
+    brand: 'DM developer',
     name: 'Daniel Marroquín',
-    role: 'Desarrollador Full Stack',
+    role: 'Desarrollador Web & Backend Senior',
     location: 'Ciudad de Guatemala, Guatemala',
+    age: '24 años',
+    yearsDeveloping: '4+ años',
+    formation: 'Ingeniería en Ciencias de la Computación — en curso',
     available: true,
     photo: maradonaPhoto,
-    tagline: 'Construyo productos web rápidos, accesibles y mantenibles.',
+    tagline: 'Cada línea de código es un pase con intención: construyo con la misma disciplina con la que se entrena una jugada, buscando que el equipo — y el producto — ganen.',
     summary:
-        'Me especializo en construir interfaces limpias y APIs sólidas, combinando buenas prácticas de ingeniería con atención al detalle. Me enfoco en escribir código legible, probado y fácil de escalar, para que las ideas lleguen a producción sin fricción.',
+        'Desarrollador full stack enfocado en construir interfaces limpias y APIs sólidas. Juego en equipo, entreno todos los días mi criterio técnico y disfruto convertir ideas ambiciosas en software estable, mantenible y listo para producción.',
     email: 'tucorreo@ejemplo.com',
     phone: '+502 0000 0000',
     cvUrl: CV,
     social: {
         github: 'https://github.com/tu-usuario',
         linkedin: 'https://linkedin.com/in/tu-usuario',
-        twitter: 'https://x.com/tu-usuario',
-        website: 'https://tu-sitio.dev'
+        computrabajo: 'https://www.computrabajo.com.gt/tu-usuario'
     }
 }
 
 export const stats = [
     { value: '20+', label: 'Proyectos entregados' },
-    { value: '3+', label: 'Años de experiencia' },
+    { value: '4+', label: 'Años de experiencia' },
     { value: '15+', label: 'Clientes felices' },
     { value: '5', label: 'Stacks dominados' }
 ]
@@ -44,12 +47,46 @@ export const experience = [
             'Construcción de interfaces con React y TypeScript, colaborando con diseño para implementar un sistema de componentes reutilizado en 4 productos.'
     },
     {
-        role: 'Desarrollador Junior',
+        role: 'Desarrollador Junior / Práctica Profesional',
         company: 'Primer Empleo',
         period: '2020 — 2021',
         description:
             'Mantenimiento de aplicaciones web, corrección de bugs y automatización de pruebas, reduciendo regresiones en producción.'
     }
+]
+
+export const education = [
+    {
+        degree: 'Ingeniería en Ciencias de la Computación',
+        school: 'Nombre de tu Universidad',
+        period: '2021 — Presente',
+        description: 'Enfoque en desarrollo de software, estructuras de datos, bases de datos y arquitectura de sistemas.'
+    },
+    {
+        degree: 'Certificación en Desarrollo Web Full Stack',
+        school: 'Plataforma / Bootcamp',
+        period: '2020',
+        description: 'Formación intensiva en JavaScript moderno, React, Node.js y buenas prácticas de ingeniería.'
+    }
+]
+
+// level: 0-100, usado en la gráfica radar de habilidades
+export const skills = [
+    { name: 'React', level: 80, category: 'Frontend' },
+    { name: 'Node.js / Express', level: 85, category: 'Backend' },
+    { name: 'JavaScript / TS', level: 88, category: 'Lenguaje' },
+    { name: 'MongoDB / SQL', level: 75, category: 'Base de datos' },
+    { name: 'Tailwind CSS', level: 92, category: 'Estilos' },
+    { name: 'Docker', level: 85, category: 'DevOps' },
+    { name: 'React Native', level: 78, category: 'Mobile' },
+    { name: 'Git / GitHub', level: 90, category: 'Control de versiones' }
+]
+
+// showcase: solo proyectos con interfaz gráfica, para el carrusel visual
+export const showcaseProjects = [
+    { name: 'Nombre del Proyecto', image: null },
+    { name: 'Otro Proyecto', image: null },
+    { name: 'Proyecto Personal', image: null }
 ]
 
 export const projects = [
@@ -59,7 +96,7 @@ export const projects = [
         description: 'Breve descripción de qué resuelve el proyecto y qué tecnologías usaste.',
         stack: ['React', 'Node.js', 'PostgreSQL'],
         url: 'https://github.com/tu-usuario/proyecto-1',
-        image: null
+        images: []
     },
     {
         name: 'Otro Proyecto',
@@ -67,7 +104,7 @@ export const projects = [
         description: 'Breve descripción del proyecto, el problema que resuelve y el impacto que tuvo.',
         stack: ['Express', 'MongoDB', 'Docker'],
         url: 'https://github.com/tu-usuario/proyecto-2',
-        image: null
+        images: []
     },
     {
         name: 'Proyecto Personal',
@@ -75,7 +112,7 @@ export const projects = [
         description: 'Breve descripción del proyecto, el problema que resuelve y el impacto que tuvo.',
         stack: ['TypeScript', 'Vite', 'Tailwind'],
         url: 'https://github.com/tu-usuario/proyecto-3',
-        image: null
+        images: []
     },
     {
         name: 'Cuarto Proyecto',
@@ -83,32 +120,6 @@ export const projects = [
         description: 'Breve descripción del proyecto, el problema que resuelve y el impacto que tuvo.',
         stack: ['React Native', 'Firebase'],
         url: 'https://github.com/tu-usuario/proyecto-4',
-        image: null
+        images: []
     }
-]
-
-export const education = [
-    {
-        degree: 'Ingeniería en Ciencias de la Computación',
-        school: 'Nombre de tu Universidad',
-        period: '2017 — 2021',
-        description: 'Enfoque en desarrollo de software, estructuras de datos y bases de datos.'
-    },
-    {
-        degree: 'Certificación en Desarrollo Web Full Stack',
-        school: 'Plataforma / Bootcamp',
-        period: '2020',
-        description: 'Formación intensiva en JavaScript moderno, React y Node.js.'
-    }
-]
-
-export const skills = [
-    { name: 'JavaScript / TypeScript', category: 'Lenguaje' },
-    { name: 'React', category: 'Frontend' },
-    { name: 'Node.js / Express', category: 'Backend' },
-    { name: 'PostgreSQL / MongoDB', category: 'Base de datos' },
-    { name: 'Tailwind CSS', category: 'Estilos' },
-    { name: 'Docker', category: 'DevOps' },
-    { name: 'Git / GitHub', category: 'Control de versiones' },
-    { name: 'REST / GraphQL', category: 'APIs' }
 ]

@@ -4,27 +4,64 @@ export default {
     theme: {
         extend: {
             colors: {
-                ink: '#0B0C10',
-                surface: '#14161D',
-                surface2: '#1B1E27',
-                border: '#262A35',
-                muted: '#8A8F9C',
-                paper: '#E7E7EA',
-                amber: {
-                    DEFAULT: '#F5B942',
-                    soft: '#F7C766'
+                navy: {
+                    DEFAULT: '#0B132B',
+                    deep: '#070B1A',
+                    surface: '#1C2541',
+                    surface2: '#242F55'
                 },
-                mint: '#6EE7B7'
+                border: '#2C3868',
+                muted: '#8892B0',
+                paper: '#E9ECF5',
+                cyan: {
+                    DEFAULT: '#00F5D4',
+                    soft: '#48CAE4'
+                },
+                pitch: '#0F4D3A'
             },
             fontFamily: {
-                mono: ['"JetBrains Mono"', '"Space Mono"', 'ui-monospace', 'monospace'],
+                display: ['"Orbitron"', 'ui-sans-serif', 'sans-serif'],
+                hud: ['"Rajdhani"', 'ui-sans-serif', 'sans-serif'],
                 sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
             },
             backgroundImage: {
-                grid: 'linear-gradient(to right, #1B1E27 1px, transparent 1px), linear-gradient(to bottom, #1B1E27 1px, transparent 1px)'
+                grid: 'linear-gradient(to right, rgba(72,202,228,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(72,202,228,0.06) 1px, transparent 1px)',
+                stadium: 'repeating-linear-gradient(90deg, rgba(15,77,58,0.35) 0px, rgba(15,77,58,0.35) 40px, rgba(11,19,43,0.35) 40px, rgba(11,19,43,0.35) 80px)'
             },
             backgroundSize: {
-                grid: '40px 40px'
+                grid: '44px 44px'
+            },
+            boxShadow: {
+                glow: '0 0 25px rgba(0,245,212,0.35)',
+                glowSoft: '0 0 15px rgba(0,245,212,0.18)',
+                glowLg: '0 0 55px rgba(0,245,212,0.25)'
+            },
+            clipPath: {
+                bevel: 'polygon(0 12px, 12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%)'
+            },
+            keyframes: {
+                'pulse-glow': {
+                    '0%, 100%': { opacity: 1, filter: 'drop-shadow(0 0 8px rgba(0,245,212,0.6))' },
+                    '50%': { opacity: 0.7, filter: 'drop-shadow(0 0 20px rgba(0,245,212,0.9))' }
+                },
+                'roll': {
+                    '0%': { transform: 'rotate(0deg)' },
+                    '100%': { transform: 'rotate(360deg)' }
+                },
+                'scan': {
+                    '0%': { transform: 'translateX(-100%)' },
+                    '100%': { transform: 'translateX(100%)' }
+                },
+                'pulse-glow-pitch': {
+                    '0%, 100%': { opacity: 1, filter: 'drop-shadow(0 0 6px rgba(16,185,129,0.7))' },
+                    '50%': { opacity: 0.75, filter: 'drop-shadow(0 0 16px rgba(16,185,129,0.9))' }
+                },
+                'pulse-glow-pitch': 'pulse-glow-pitch 2.2s ease-in-out infinite',
+            },
+            animation: {
+                'pulse-glow': 'pulse-glow 2.4s ease-in-out infinite',
+                'roll': 'roll 1.1s linear infinite',
+                'scan': 'scan 2.5s linear infinite'
             }
         }
     },
