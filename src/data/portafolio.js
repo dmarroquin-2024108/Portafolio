@@ -1,35 +1,30 @@
-import maradonaPhoto from '../assets/maradona.jpg'
+import danielPhoto from '../assets/yo.png'
+import ChapinLogo from '../assets/ChapinBank.jpeg'
+import DebuggersLogo from '../assets/DebuggersEats.jpeg'
+import FeelWell from '../assets/FeelWell.jpeg'
 import CV from '../assets/CV-Daniel-Marroquin-Zabala.pdf'
 
 export const profile = {
-    brand: 'DM developer',
+    brand: 'Daniel Marroquín',
     name: 'Daniel Marroquín',
-    role: 'Desarrollador Web & Backend Senior',
+    role: 'Desarrollador Web & Backend Junior',
     location: 'Ciudad de Guatemala, Guatemala',
-    age: '24 años',
+    age: '18 años',
     yearsDeveloping: '4+ años',
-    formation: 'Ingeniería en Ciencias de la Computación — en curso',
+    formation: 'Perito en Informática',
     available: true,
-    photo: maradonaPhoto,
-    tagline: 'Cada línea de código es un pase con intención: construyo con la misma disciplina con la que se entrena una jugada, buscando que el equipo — y el producto — ganen.',
+    photo: danielPhoto,
+    tagline: 'Haz lo que debes y está en lo que haces." — San Josemaría Escrivá',
     summary:
-        'Desarrollador full stack enfocado en construir interfaces limpias y APIs sólidas. Juego en equipo, entreno todos los días mi criterio técnico y disfruto convertir ideas ambiciosas en software estable, mantenible y listo para producción.',
-    email: 'tucorreo@ejemplo.com',
-    phone: '+502 0000 0000',
+        'Desarrollador Full Stack en formación, con interés en el desarrollo de aplicaciones web y la creación de interfaces intuitivas junto con APIs robustas. Enfocado en escribir código limpio, aplicar buenas prácticas de desarrollo y fortalecer continuamente mis habilidades técnicas para construir soluciones eficientes y mantenibles.',
+    email: 'mzabaladalejandro@gmail.com',
     cvUrl: CV,
     social: {
-        github: 'https://github.com/tu-usuario',
+        github: 'https://github.com/dmarroquin-2024108',
         linkedin: 'https://linkedin.com/in/tu-usuario',
-        computrabajo: 'https://www.computrabajo.com.gt/tu-usuario'
+        computrabajo: 'https://www.computrabajo.com.gt/Daniel-Alejandro-Marroquín-Zabala'
     }
 }
-
-export const stats = [
-    { value: '20+', label: 'Proyectos entregados' },
-    { value: '4+', label: 'Años de experiencia' },
-    { value: '15+', label: 'Clientes felices' },
-    { value: '5', label: 'Stacks dominados' }
-]
 
 export const experience = [
     {
@@ -57,36 +52,36 @@ export const experience = [
 
 export const education = [
     {
-        degree: 'Ingeniería en Ciencias de la Computación',
-        school: 'Nombre de tu Universidad',
-        period: '2021 — Presente',
-        description: 'Enfoque en desarrollo de software, estructuras de datos, bases de datos y arquitectura de sistemas.'
+        degree: 'Educación Nivel Primaria - Básicos',
+        school: 'Liceo Católico Santa Isabel',
+        period: '2015 — 2023',
+        description: 'Enfoque en la formación académica, ética y humana, fundamentada en valores y responsabilidad.'
     },
     {
-        degree: 'Certificación en Desarrollo Web Full Stack',
-        school: 'Plataforma / Bootcamp',
-        period: '2020',
-        description: 'Formación intensiva en JavaScript moderno, React, Node.js y buenas prácticas de ingeniería.'
+        degree: 'Perito en Informática',
+        school: 'Centro Educativo Técnico Laboral Kinal',
+        period: '2024 - Actualidad',
+        description: 'Enfoque en desarrollo de software, estructuras de datos, bases de datos y arquitectura de sistemas.'
     }
 ]
 
 // level: 0-100, usado en la gráfica radar de habilidades
 export const skills = [
     { name: 'React', level: 80, category: 'Frontend' },
-    { name: 'Node.js / Express', level: 85, category: 'Backend' },
-    { name: 'JavaScript / TS', level: 88, category: 'Lenguaje' },
-    { name: 'MongoDB / SQL', level: 75, category: 'Base de datos' },
-    { name: 'Tailwind CSS', level: 92, category: 'Estilos' },
-    { name: 'Docker', level: 85, category: 'DevOps' },
-    { name: 'React Native', level: 78, category: 'Mobile' },
+    { name: 'Node.js / Express', level: 75, category: 'Backend' },
+    { name: 'JavaScript / Java / C#', level: 75, category: 'Lenguaje' },
+    { name: 'MongoDB / SQL', level: 85, category: 'Base de datos' },
+    { name: 'Tailwind CSS', level: 85, category: 'Estilos' },
+    { name: 'Docker', level: 72, category: 'DevOps' },
+    { name: 'React Native', level: 65, category: 'Mobile' },
     { name: 'Git / GitHub', level: 90, category: 'Control de versiones' }
 ]
 
 // showcase: solo proyectos con interfaz gráfica, para el carrusel visual
 export const showcaseProjects = [
-    { name: 'Nombre del Proyecto', image: null },
-    { name: 'Otro Proyecto', image: null },
-    { name: 'Proyecto Personal', image: null }
+    { name: 'Chapin Bank', image: ChapinLogo },
+    { name: 'Debuggers Eats', image: DebuggersLogo },
+    { name: 'FeelWell', image: FeelWell }
 ]
 
 export const projects = [

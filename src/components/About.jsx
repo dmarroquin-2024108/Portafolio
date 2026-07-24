@@ -7,7 +7,6 @@ const generalData = [
     { icon: User, label: 'Nombre', value: profile.name },
     { icon: Calendar, label: 'Edad', value: profile.age },
     { icon: Mail, label: 'Correo', value: profile.email },
-    { icon: Phone, label: 'Teléfono', value: profile.phone },
     { icon: MapPin, label: 'Ubicación', value: profile.location },
     { icon: GraduationCap, label: 'Formación', value: profile.formation }
 ]

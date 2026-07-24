@@ -1,6 +1,6 @@
 import { ArrowDown, Download, Radio } from 'lucide-react'
 import { FaGithub, FaLinkedin } from 'react-icons/fa6'
-import { profile, stats } from '../data/portafolio.js'
+import { profile } from '../data/portafolio.js'
 import ProfilePhoto from './ProfilePhoto.jsx'
 import useTypewriter from '../hooks/useTypewriter.js'
 import { Reveal } from './Reveal.jsx';
