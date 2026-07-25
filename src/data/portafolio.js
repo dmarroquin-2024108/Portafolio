@@ -1,7 +1,22 @@
 import danielPhoto from '../assets/yo.png'
 import ChapinLogo from '../assets/ChapinBank.jpeg'
+import loginC from '../assets/loginC.jpeg'
+import cuentas from '../assets/cuentas.jpeg'
+import deposito from '../assets/deposito.jpeg'
+import productos from '../assets/productos.jpeg'
+import resumen from '../assets/resumen.jpeg'     
 import DebuggersLogo from '../assets/DebuggersEats.jpeg'
+import loginD from '../assets/loginD.jpeg'
+import menu from '../assets/menuA.jpeg'
+import panel from '../assets/panelA.jpeg'
+import reporte from '../assets/reporte.jpeg'
+import users from '../assets/users.jpeg'
 import FeelWell from '../assets/FeelWell.jpeg'
+import loginF from '../assets/loginF.jpeg'
+import ejercicios from '../assets/ejercicios.jpeg'
+import menuU from '../assets/menuU.jpeg'
+import retos from '../assets/retos.jpeg'
+import tiyu from '../assets/tiyu.jpeg'
 import CV from '../assets/CV-Daniel-Marroquin-Zabala.pdf'
 
 export const profile = {
@@ -68,7 +83,7 @@ export const education = [
 // level: 0-100, usado en la gráfica radar de habilidades
 export const skills = [
     { name: 'React', level: 80, category: 'Frontend' },
-    { name: 'Node.js / Express', level: 75, category: 'Backend' },
+    { name: 'Node.js', level: 75, category: 'Backend' },
     { name: 'JavaScript / Java / C#', level: 75, category: 'Lenguaje' },
     { name: 'MongoDB / SQL', level: 85, category: 'Base de datos' },
     { name: 'Tailwind CSS', level: 85, category: 'Estilos' },
@@ -86,35 +101,42 @@ export const showcaseProjects = [
 
 export const projects = [
     {
-        name: 'Nombre del Proyecto',
-        category: 'App Web · Full Stack',
-        description: 'Breve descripción de qué resuelve el proyecto y qué tecnologías usaste.',
-        stack: ['React', 'Node.js', 'PostgreSQL'],
-        url: 'https://github.com/tu-usuario/proyecto-1',
-        images: []
+        name: 'Chapin Bank',
+        category: 'App Web ',
+        description: 'Sistema bancario web enfocado en la gestión de cuentas, autenticación de usuarios y operaciones financieras, construido con una arquitectura escalable y buenas prácticas de desarrollo.',
+        stack: [
+            'React',
+            '.NET 8',
+            'Node.js',
+            'PostgreSQL',
+            'Docker'],
+        url: 'https://github.com/dmarroquin-2024108/ChapinBank.git',
+        images: [loginC, cuentas, deposito, productos, resumen]
     },
     {
-        name: 'Otro Proyecto',
-        category: 'API · Backend',
-        description: 'Breve descripción del proyecto, el problema que resuelve y el impacto que tuvo.',
-        stack: ['Express', 'MongoDB', 'Docker'],
-        url: 'https://github.com/tu-usuario/proyecto-2',
-        images: []
+        name: 'Debuggers Eats',
+        category: 'App Web ',
+        description: 'Es una plataforma orientada a la gestión y administración de servicios relacionados con Restaurantes, diseñada para facilitar la interacción entre usuarios y establecimientos.',
+        stack: [
+            'React',
+            '.NET 8',
+            'Node.js',
+            'PostgreSQL',
+            'Docker'],
+        url: 'https://github.com/elopez-2021393/DebuggersEats.git',
+        images: [loginD, menu, panel, reporte, users]
     },
     {
-        name: 'Proyecto Personal',
-        category: 'Herramienta · Open Source',
+        name: 'FeelWell',
+        category: 'App Web ',
         description: 'Breve descripción del proyecto, el problema que resuelve y el impacto que tuvo.',
-        stack: ['TypeScript', 'Vite', 'Tailwind'],
-        url: 'https://github.com/tu-usuario/proyecto-3',
-        images: []
+        stack: [
+            'React',
+            '.NET 8',
+            'Node.js',
+            'PostgreSQL',
+            'Docker'],
+        url: 'https://github.com/jzeta-2021001/FeelWeell.git',
+        images: [loginF, ejercicios, menuU, retos, tiyu ]
     },
-    {
-        name: 'Cuarto Proyecto',
-        category: 'Mobile · React Native',
-        description: 'Breve descripción del proyecto, el problema que resuelve y el impacto que tuvo.',
-        stack: ['React Native', 'Firebase'],
-        url: 'https://github.com/tu-usuario/proyecto-4',
-        images: []
-    }
 ]
