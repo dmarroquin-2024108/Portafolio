@@ -30,15 +30,6 @@ export default function Hero() {
 
             <div className="relative grid lg:grid-cols-[1.1fr,0.9fr] gap-12 items-center">
                 <div>
-                    {profile.available && (
-                        <div className="relative inline-flex items-center gap-2.5 border border-pitch/70 bg-pitch/10 pl-2 pr-4 py-1.5 mb-6 [clip-path:polygon(12px_0,100%_0,100%_100%,0_100%,0_12px)]">
-                            <span className="absolute inset-0 -z-10 animate-scan bg-gradient-to-r from-transparent via-emerald-400/10 to-transparent" aria-hidden="true" />
-                            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-400/15 animate-pulse-glow-pitch">
-                                <Radio className="h-3 w-3 text-emerald-400" />
-                            </span>
-                            <span className="font-hud text-xs uppercase tracking-[0.2em] text-emerald-300">{t('hero.available')}</span>
-                        </div>
-                    )}
                     <Reveal y={24}>
                         <p className="font-hud text-cyan text-sm uppercase tracking-[0.3em] mb-3">{t('hero.eyebrow')}</p>
                         <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-paper text-glow">

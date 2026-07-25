@@ -87,7 +87,7 @@ export default function SkillsRadar() {
                             <div key={skill.name} className="group">
                                 <div className="flex items-center justify-between mb-1.5">
                                     <span className="flex items-center gap-2.5 font-hud text-sm text-paper">
-                                        <span className="flex h-8 w-8 items-center justify-center border border-cyan/30 bg-navy-surface/80 text-cyan">
+                                        <span className="flex h-8 w-8 items-center justify-center  bg-navy-surface/80 text-cyan">
                                             <Icon className="h-5 w-5" />
                                         </span>
                                         {skill.name}

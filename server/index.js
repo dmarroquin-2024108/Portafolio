@@ -4,6 +4,7 @@ import cors from 'cors'
 import helmet from 'helmet'
 import rateLimit from 'express-rate-limit'
 import validator from 'validator'
+import { sendContactEmail } from './mailer.js'
 
 const app = express()
 const PORT = process.env.PORT || 4000
@@ -23,7 +24,7 @@ app.use(
         }
     })
 )
-app.use(express.json({ limit: '10kb' })) 
+app.use(express.json({ limit: '10kb' }))
 
 // Limita cuántas veces puede escribir la misma IP al formulario de contacto,
 // para frenar bots y ataques de flood/spam.
@@ -40,7 +41,7 @@ function sanitizeText(value) {
     return validator.escape(validator.stripLow(String(value).trim()))
 }
 
-app.post('/api/contact', contactLimiter, (req, res) => {
+app.post('/api/contact', contactLimiter, async (req, res) => {
     const { name, email, message, company } = req.body || {}
 
     // Honeypot: campo oculto que solo un bot llenaría (ver Contact.jsx).
@@ -81,6 +82,13 @@ app.post('/api/contact', contactLimiter, (req, res) => {
     // Los datos ya llegan validados y sanitizados a este punto.
     console.log('Nuevo mensaje de contacto:', safeData)
 
+    try {
+        await sendContactEmail(safeData)
+    } catch (err) {
+        console.error('[contact] Error al enviar el correo:', err.message)
+        return res.status(500).json({ error: 'No se pudo enviar el mensaje. Intenta de nuevo más tarde.' })
+    }
+    
     return res.status(200).json({ ok: true })
 })
 

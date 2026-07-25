@@ -1,4 +1,4 @@
-import danielPhoto from '../assets/yo.png'
+import danielPhoto from '../assets/Yo.png'
 import ChapinLogo from '../assets/ChapinBank.jpeg'
 import loginC from '../assets/loginC.jpeg'
 import cuentas from '../assets/cuentas.jpeg'
@@ -53,7 +53,7 @@ export const profile = {
     cvUrl: CV,
     social: {
         github: 'https://github.com/dmarroquin-2024108',
-        linkedin: 'https://linkedin.com/in/tu-usuario',
+        linkedin: 'https://www.linkedin.com/in/daniel-marroquin-680221425',
         computrabajo: 'https://www.computrabajo.com.gt/Daniel-Alejandro-Marroquín-Zabala'
     }
 }

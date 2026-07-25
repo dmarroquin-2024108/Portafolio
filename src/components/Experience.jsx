@@ -17,7 +17,7 @@ export default function Experience() {
             <HudPanel className="p-6 sm:p-8" accent>
                 <div className="pointer-events-none absolute -top-20 -right-16 h-56 w-56 rounded-full bg-cyan/10 blur-[100px]" aria-hidden="true" />
 
-                <div className="relative inline-flex items-center gap-2 border border-cyan/40 bg-cyan/10 px-3 py-1.5 mb-5 [clip-path:polygon(10px_0,100%_0,100%_100%,0_100%,0_10px)]">
+                <div className="relative inline-flex items-center gap-2 border border-border bg-navy-surface/60 px-3 py-1.5 mb-5 [clip-path:polygon(10px_0,100%_0,100%_100%,0_100%,0_10px)]">
                     <Sparkles className="h-3.5 w-3.5 text-cyan animate-pulse-glow" />
                     <span className="font-hud text-[11px] uppercase tracking-[0.2em] text-cyan">{t('experience.badge')}</span>
                 </div>
@@ -31,7 +31,7 @@ export default function Experience() {
 
                 <div className="mt-8 grid grid-cols-3 gap-4 sm:gap-6 max-w-lg">
                     {stats.map((stat) => (
-                        <div key={stat.label} className="text-center border border-border/70 bg-navy-deep/40 py-4 px-2">
+                        <div key={stat.label} className="text-center border border-border bg-navy-surface/60 py-4 px-2">
                             <p className="font-display text-2xl sm:text-3xl font-bold text-cyan text-glow">{stat.value}</p>
                             <p className="mt-1 font-hud text-[10px] sm:text-[11px] uppercase tracking-wide text-muted">{stat.label}</p>
                         </div>

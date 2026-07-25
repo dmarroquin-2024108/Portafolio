@@ -47,7 +47,7 @@ export default function Sidebar() {
     return (
         <>
             {/* ---------- Riel fijo — escritorio ---------- */}
-            <aside className="hidden md:flex fixed inset-y-0 left-0 z-40 w-20 flex-col items-center justify-between border-r border-cyan/15 bg-navy-deep/90 backdrop-blur-md py-6">
+            <aside className="hidden md:flex fixed inset-y-0 left-0 z-40 w-20 flex-col items-center justify-between border border-border bg-navy-surface/60 backdrop-blur-md py-6">
                 <a href="#home" aria-label="Inicio">
                     <Logo iconOnly />
                 </a>

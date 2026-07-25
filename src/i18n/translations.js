@@ -13,7 +13,7 @@ export const translations = {
             current: 'ES'
         },
         hero: {
-            available: 'En cancha · disponible para trabajar',
+            available: 'Hola! Bienvenido',
             eyebrow: 'Bienvenido al terreno de juego',
             explore: 'Explorar Portafolio',
             downloadCv: 'Descargar CV'
@@ -37,11 +37,11 @@ export const translations = {
             title: 'Trayectoria',
             subtitle: 'Aún escribiendo el primer capítulo profesional',
             badge: 'Nuevo en la cancha',
-            heading: 'Sin experiencia laboral formal (todavía) — y eso está bien',
+            heading: 'Sin experiencia laboral formal (todavía)',
             body: 'Estoy en la etapa de construir mi carrera desde la base: proyectos reales, código en producción propia y aprendizaje constante. Cada repositorio de este portafolio es mi forma de demostrar lo que puedo hacer antes de mi primer empleo formal.',
             stats: [
                 { value: '4+', label: 'años programando' },
-                { value: '3', label: 'proyectos full-stack' },
+                { value: '3', label: 'proyectos' },
                 { value: '8', label: 'tecnologías en uso' }
             ],
             highlightsTitle: 'Lo que sí traigo a la mesa',
