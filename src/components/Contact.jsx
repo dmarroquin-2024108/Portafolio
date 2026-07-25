@@ -40,7 +40,8 @@ export default function Contact() {
         setStatus('loading')
         setErrorMsg('')
         try {
-            const res = await fetch('/api/contact', {
+            const apiUrl = import.meta.env.VITE_API_URL || '/api/contact'
+            const res = await fetch(apiUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(form)

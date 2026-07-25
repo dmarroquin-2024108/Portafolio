@@ -1,4 +1,10 @@
-import 'dotenv/config'
+import path from 'path'
+import { fileURLToPath } from 'url'
+import dotenv from 'dotenv'
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+dotenv.config({ path: path.resolve(__dirname, '..', '.env') })
+
 import express from 'express'
 import cors from 'cors'
 import helmet from 'helmet'
@@ -9,8 +15,8 @@ import { sendContactEmail } from './mailer.js'
 const app = express()
 const PORT = process.env.PORT || 4000
 
-// Origen(es) permitido(s) para CORS. En producción define ALLOWED_ORIGIN
-// en tu .env (ej: https://tu-portafolio.com). Nunca dejes CORS abierto a "*" en un endpoint que recibe datos de usuarios.
+app.set('trust proxy', 1)
+
 const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGIN || 'http://localhost:5173').split(',')
 
 app.use(helmet())
@@ -24,7 +30,7 @@ app.use(
         }
     })
 )
-app.use(express.json({ limit: '10kb' }))
+app.use(express.json({ limit: '10kb' })) 
 
 // Limita cuántas veces puede escribir la misma IP al formulario de contacto,
 // para frenar bots y ataques de flood/spam.
@@ -37,16 +43,11 @@ const contactLimiter = rateLimit({
 })
 
 function sanitizeText(value) {
-    // quita tags HTML/script y espacios sobrantes para evitar inyección
     return validator.escape(validator.stripLow(String(value).trim()))
 }
 
 app.post('/api/contact', contactLimiter, async (req, res) => {
     const { name, email, message, company } = req.body || {}
-
-    // Honeypot: campo oculto que solo un bot llenaría (ver Contact.jsx).
-    // Si viene con valor, respondemos 200 "falso" sin procesar nada,
-    // para no delatarle al bot que fue detectado.
     if (company) {
         return res.status(200).json({ ok: true })
     }
@@ -77,9 +78,6 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
         message: sanitizeText(message)
     }
 
-    // Aquí es donde conectarías un servicio real de correo, por ejemplo
-    // Nodemailer, Resend, SendGrid, o guardarías el mensaje en una base de datos.
-    // Los datos ya llegan validados y sanitizados a este punto.
     console.log('Nuevo mensaje de contacto:', safeData)
 
     try {
@@ -88,7 +86,7 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
         console.error('[contact] Error al enviar el correo:', err.message)
         return res.status(500).json({ error: 'No se pudo enviar el mensaje. Intenta de nuevo más tarde.' })
     }
-    
+
     return res.status(200).json({ ok: true })
 })
 
