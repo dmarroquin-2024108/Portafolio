@@ -22,16 +22,33 @@ import CV from '../assets/CV-Daniel-Marroquin-Zabala.pdf'
 export const profile = {
     brand: 'Daniel Marroquín',
     name: 'Daniel Marroquín',
-    role: 'Desarrollador Web & Backend Junior',
-    location: 'Ciudad de Guatemala, Guatemala',
-    age: '18 años',
-    yearsDeveloping: '4+ años',
-    formation: 'Perito en Informática',
+    role: {
+        es: 'Desarrollador Web & Backend Junior',
+        en: 'Junior Web & Backend Developer'
+    },
+    location: {
+        es: 'Ciudad de Guatemala, Guatemala',
+        en: 'Guatemala City, Guatemala'
+    },
+    age: {
+        es: '18 años',
+        en: '18 years old'
+    },
+    yearsDeveloping: '4+',
+    formation: {
+        es: 'Perito en Informática',
+        en: 'IT Technician (Perito en Informática)'
+    },
     available: true,
     photo: danielPhoto,
-    tagline: 'Haz lo que debes y está en lo que haces." — San Josemaría Escrivá',
-    summary:
-        'Desarrollador Full Stack en formación, con interés en el desarrollo de aplicaciones web y la creación de interfaces intuitivas junto con APIs robustas. Enfocado en escribir código limpio, aplicar buenas prácticas de desarrollo y fortalecer continuamente mis habilidades técnicas para construir soluciones eficientes y mantenibles.',
+    tagline: {
+        es: 'Haz lo que debes y está en lo que haces." — San Josemaría Escrivá',
+        en: '"Do what you must, and be in what you do." — San Josemaría Escrivá'
+    },
+    summary: {
+        es: 'Desarrollador Full Stack en formación, con interés en el desarrollo de aplicaciones web y la creación de interfaces intuitivas junto con APIs robustas. Enfocado en escribir código limpio, aplicar buenas prácticas de desarrollo y fortalecer continuamente mis habilidades técnicas para construir soluciones eficientes y mantenibles.',
+        en: 'Full Stack developer in training, interested in building web applications and crafting intuitive interfaces backed by robust APIs. Focused on writing clean code, applying good development practices, and continuously strengthening my technical skills to build efficient, maintainable solutions.'
+    },
     email: 'mzabaladalejandro@gmail.com',
     cvUrl: CV,
     social: {
@@ -41,55 +58,43 @@ export const profile = {
     }
 }
 
-export const experience = [
-    {
-        role: 'Ingeniero de Software',
-        company: 'Nombre de la Empresa',
-        period: '2023 — Presente',
-        description:
-            'Desarrollo de features end-to-end en un producto SaaS, liderando la migración de la API a arquitectura modular y mejorando el tiempo de carga en un 40%.'
-    },
-    {
-        role: 'Desarrollador Frontend',
-        company: 'Otra Empresa',
-        period: '2021 — 2023',
-        description:
-            'Construcción de interfaces con React y TypeScript, colaborando con diseño para implementar un sistema de componentes reutilizado en 4 productos.'
-    },
-    {
-        role: 'Desarrollador Junior / Práctica Profesional',
-        company: 'Primer Empleo',
-        period: '2020 — 2021',
-        description:
-            'Mantenimiento de aplicaciones web, corrección de bugs y automatización de pruebas, reduciendo regresiones en producción.'
-    }
-]
-
 export const education = [
     {
-        degree: 'Educación Nivel Primaria - Básicos',
+        degree: {
+            es: 'Educación Nivel Primaria - Básicos',
+            en: 'Primary & Middle School Education'
+        },
         school: 'Liceo Católico Santa Isabel',
         period: '2015 — 2023',
-        description: 'Enfoque en la formación académica, ética y humana, fundamentada en valores y responsabilidad.'
+        description: {
+            es: 'Enfoque en la formación académica, ética y humana, fundamentada en valores y responsabilidad.',
+            en: 'Focus on academic, ethical and human formation, grounded in values and responsibility.'
+        }
     },
     {
-        degree: 'Perito en Informática',
+        degree: {
+            es: 'Perito en Informática',
+            en: 'IT Technician (Perito en Informática)'
+        },
         school: 'Centro Educativo Técnico Laboral Kinal',
         period: '2024 - Actualidad',
-        description: 'Enfoque en desarrollo de software, estructuras de datos, bases de datos y arquitectura de sistemas.'
+        description: {
+            es: 'Enfoque en desarrollo de software, estructuras de datos, bases de datos y arquitectura de sistemas.',
+            en: 'Focus on software development, data structures, databases and systems architecture.'
+        }
     }
 ]
 
 // level: 0-100, usado en la gráfica radar de habilidades
 export const skills = [
-    { name: 'React', level: 80, category: 'Frontend' },
-    { name: 'Node.js', level: 75, category: 'Backend' },
-    { name: 'JavaScript / Java / C#', level: 75, category: 'Lenguaje' },
-    { name: 'MongoDB / SQL', level: 85, category: 'Base de datos' },
-    { name: 'Tailwind CSS', level: 85, category: 'Estilos' },
-    { name: 'Docker', level: 72, category: 'DevOps' },
-    { name: 'React Native', level: 65, category: 'Mobile' },
-    { name: 'Git / GitHub', level: 90, category: 'Control de versiones' }
+    { name: 'React', level: 80, category: { es: 'Frontend', en: 'Frontend' } },
+    { name: 'Node.js ', level: 85, category: { es: 'Backend', en: 'Backend' } },
+    { name: 'JavaScript / Java', level: 77, category: { es: 'Lenguaje', en: 'Language' } },
+    { name: 'MongoDB / SQL', level: 75, category: { es: 'Base de datos', en: 'Database' } },
+    { name: 'Tailwind CSS', level: 86, category: { es: 'Estilos', en: 'Styling' } },
+    { name: 'Docker', level: 65, category: { es: 'DevOps', en: 'DevOps' } },
+    { name: 'React Native', level: 70, category: { es: 'Mobile', en: 'Mobile' } },
+    { name: 'Git / GitHub', level: 87, category: { es: 'Control de versiones', en: 'Version control' } }
 ]
 
 // showcase: solo proyectos con interfaz gráfica, para el carrusel visual
@@ -102,8 +107,11 @@ export const showcaseProjects = [
 export const projects = [
     {
         name: 'Chapin Bank',
-        category: 'App Web ',
-        description: 'Sistema bancario web enfocado en la gestión de cuentas, autenticación de usuarios y operaciones financieras, construido con una arquitectura escalable y buenas prácticas de desarrollo.',
+        category: { es: 'App Web', en: 'Web App' },
+        description: {
+            es: 'Sistema bancario web enfocado en la gestión de cuentas, autenticación de usuarios y operaciones financieras, construido con una arquitectura escalable y buenas prácticas de desarrollo.',
+            en: 'Web banking system focused on account management, user authentication and financial operations, built with a scalable architecture and good development practices.'
+        },
         stack: [
             'React',
             '.NET 8',
@@ -115,8 +123,11 @@ export const projects = [
     },
     {
         name: 'Debuggers Eats',
-        category: 'App Web ',
-        description: 'Es una plataforma orientada a la gestión y administración de servicios relacionados con Restaurantes, diseñada para facilitar la interacción entre usuarios y establecimientos.',
+        category: { es: 'App Web', en: 'Web App' },
+        description: {
+            es: 'Es una plataforma orientada a la gestión y administración de servicios relacionados con Restaurantes, diseñada para facilitar la interacción entre usuarios y establecimientos.',
+            en: 'A platform oriented to the management and administration of restaurant-related services, designed to facilitate interaction between users and establishments.'
+        },
         stack: [
             'React',
             '.NET 8',
@@ -128,8 +139,11 @@ export const projects = [
     },
     {
         name: 'FeelWell',
-        category: 'App Web ',
-        description: 'Breve descripción del proyecto, el problema que resuelve y el impacto que tuvo.',
+        category: { es: 'App Web', en: 'Web App' },
+        description: {
+            es: 'FeelWell es una plataforma de apoyo emocional que utiliza tecnología e inteligencia artificial para acompañar a los usuarios en el seguimiento de su bienestar mental.',
+            en: 'FeelWell is an emotional support platform that uses technology and artificial intelligence to assist users in monitoring and improving their mental well-being.'
+        },
         stack: [
             'React',
             '.NET 8',

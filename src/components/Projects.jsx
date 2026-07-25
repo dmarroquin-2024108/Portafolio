@@ -4,13 +4,15 @@ import { FaGithub } from 'react-icons/fa6'
 import { projects } from '../data/portafolio.js'
 import SectionHeader from './SectionHeader.jsx'
 import ProjectModal from './ProjectModal.jsx'
+import { useLanguage } from '../context/LanguageContext.jsx'
 
 export default function Projects() {
+    const { t, lang } = useLanguage()
     const [active, setActive] = useState(null)
 
     return (
-        <section id="projects" className="py-20">
-            <SectionHeader index={6} title="Portafolio de aplicaciones" id="projects" subtitle="Plantilla completa — temporadas anteriores" />
+        <section id="projects" className="py-10">
+            <SectionHeader index={6} title={t('projects.title')} id="projects" subtitle={t('projects.subtitle')} />
             <div className="grid sm:grid-cols-2 gap-5">
                 {projects.map((project) => (
                     <button
@@ -25,8 +27,8 @@ export default function Projects() {
                             </div>
                             <FaGithub className="h-4 w-4 text-muted group-hover:text-cyan transition-colors" />
                         </div>
-                        <p className="font-hud text-xs text-muted mt-2 uppercase tracking-wide">{project.category}</p>
-                        <p className="text-sm text-muted leading-relaxed mt-3">{project.description}</p>
+                        <p className="font-hud text-xs text-muted mt-2 uppercase tracking-wide">{project.category[lang]}</p>
+                        <p className="text-sm text-muted leading-relaxed mt-3">{project.description[lang]}</p>
                         <div className="mt-4 flex flex-wrap gap-2">
                             {project.stack.map((tech) => (
                                 <span key={tech} className="font-hud text-[11px] uppercase border border-border px-2.5 py-1 text-muted">
@@ -35,7 +37,7 @@ export default function Projects() {
                             ))}
                         </div>
                         <span className="mt-4 inline-block font-hud text-xs uppercase tracking-wide text-cyan">
-                            Ver galería →
+                            {t('projects.viewGallery')} →
                         </span>
                     </button>
                 ))}

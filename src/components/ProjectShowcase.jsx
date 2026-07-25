@@ -3,8 +3,10 @@ import { ChevronLeft, ChevronRight, ImageOff } from 'lucide-react'
 import { showcaseProjects } from '../data/portafolio.js'
 import SectionHeader from './SectionHeader.jsx'
 import HudPanel from './HudPanel.jsx'
+import { useLanguage } from '../context/LanguageContext.jsx'
 
 export default function ProjectShowcase() {
+    const { t } = useLanguage()
     const [index, setIndex] = useState(0)
     const total = showcaseProjects.length
 
@@ -18,8 +20,8 @@ export default function ProjectShowcase() {
     const current = showcaseProjects[index]
 
     return (
-        <section id="showcase" className="py-20">
-            <SectionHeader index={5} title="Vistas de proyectos" id="showcase" subtitle="Capturas de interfaz — selección visual" />
+        <section id="showcase" className="py-10">
+            <SectionHeader index={5} title={t('showcase.title')} id="showcase" subtitle={t('showcase.subtitle')} />
 
             <HudPanel className="p-4 sm:p-6" accent>
                 <div className="relative aspect-video w-full overflow-hidden bg-navy-deep">
@@ -28,7 +30,7 @@ export default function ProjectShowcase() {
                     ) : (
                         <div className="flex h-full w-full flex-col items-center justify-center gap-2 text-muted">
                             <ImageOff className="h-8 w-8" />
-                            <span className="font-hud text-xs uppercase tracking-wide">Captura pendiente</span>
+                            <span className="font-hud text-xs uppercase tracking-wide">{t('showcase.pending')}</span>
                         </div>
                     )}
                     <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-cyan/15" />
@@ -37,7 +39,7 @@ export default function ProjectShowcase() {
                 <div className="mt-4 flex items-center justify-between">
                     <button
                         onClick={prev}
-                        aria-label="Anterior"
+                        aria-label={t('showcase.prev')}
                         className="flex h-9 w-9 items-center justify-center border border-cyan/30 text-cyan hover:bg-cyan/10 transition-colors"
                     >
                         <ChevronLeft className="h-4 w-4" />
@@ -59,7 +61,7 @@ export default function ProjectShowcase() {
 
                     <button
                         onClick={next}
-                        aria-label="Siguiente"
+                        aria-label={t('showcase.next')}
                         className="flex h-9 w-9 items-center justify-center border border-cyan/30 text-cyan hover:bg-cyan/10 transition-colors"
                     >
                         <ChevronRight className="h-4 w-4" />

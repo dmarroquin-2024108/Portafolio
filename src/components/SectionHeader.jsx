@@ -4,7 +4,7 @@ function pad(n) {
 
 export default function SectionHeader({ index, title, id, subtitle }) {
     return (
-        <div id={id} className="mb-10 scroll-mt-24">
+        <div id={id} className="mb-6 scroll-mt-24">
             <div className="flex items-baseline gap-3">
                 <span className="font-display text-sm text-cyan">{`/${pad(index)}`}</span>
                 <h2 className="font-display text-xl sm:text-2xl font-bold text-paper tracking-tight uppercase">

@@ -4,9 +4,11 @@ import { profile } from '../data/portafolio.js'
 import ProfilePhoto from './ProfilePhoto.jsx'
 import useTypewriter from '../hooks/useTypewriter.js'
 import { Reveal } from './Reveal.jsx';
+import { useLanguage } from '../context/LanguageContext.jsx'
 
 export default function Hero() {
-    const { displayed: typedRole, done: typingPaused } = useTypewriter(profile.role, {
+    const { t, lang } = useLanguage()
+    const { displayed: typedRole, done: typingPaused } = useTypewriter(profile.role[lang], {
         typeSpeed: 55,
         deleteSpeed: 30,
         startDelay: 400,
@@ -16,7 +18,7 @@ export default function Hero() {
     })
 
     return (
-        <section id="home" className="relative pt-28 pb-24 scroll-mt-24 overflow-hidden">
+        <section id="home" className="relative pt-20 pb-10 scroll-mt-24 overflow-hidden">
             <div
                 className="pointer-events-none absolute inset-0 bg-grid bg-grid opacity-60 [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,black,transparent)]"
                 aria-hidden="true"
@@ -34,11 +36,11 @@ export default function Hero() {
                             <span className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-400/15 animate-pulse-glow-pitch">
                                 <Radio className="h-3 w-3 text-emerald-400" />
                             </span>
-                            <span className="font-hud text-xs uppercase tracking-[0.2em] text-emerald-300">En cancha · disponible para trabajar</span>
+                            <span className="font-hud text-xs uppercase tracking-[0.2em] text-emerald-300">{t('hero.available')}</span>
                         </div>
                     )}
                     <Reveal y={24}>
-                        <p className="font-hud text-cyan text-sm uppercase tracking-[0.3em] mb-3">Bienvenido al terreno de juego</p>
+                        <p className="font-hud text-cyan text-sm uppercase tracking-[0.3em] mb-3">{t('hero.eyebrow')}</p>
                         <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-paper text-glow">
                             {profile.brand}
                         </h1>
@@ -48,11 +50,11 @@ export default function Hero() {
                                 className={`ml-1 inline-block h-[0.9em] w-[3px] translate-y-[0.1em] bg-cyan align-middle ${typingPaused ? 'animate-pulse' : ''}`}
                                 aria-hidden="true"
                             />
-                            <span className="sr-only">{profile.role}</span>
+                            <span className="sr-only">{profile.role[lang]}</span>
                         </h2>
 
                         <p className="mt-6 max-w-xl text-muted leading-relaxed italic border-l-2 border-cyan/50 pl-4">
-                            “{profile.tagline}”
+                            “{profile.tagline[lang]}”
                         </p>
 
                         <div className="mt-8 flex flex-wrap items-center gap-4">
@@ -60,7 +62,7 @@ export default function Hero() {
                                 href="#about"
                                 className="group inline-flex items-center gap-2 bg-cyan px-6 py-3 font-hud font-bold uppercase tracking-wide text-navy-deep shadow-glow transition-all hover:shadow-glowLg [clip-path:polygon(0_8px,8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%)]"
                             >
-                                Explorar Portafolio
+                                {t('hero.explore')}
                                 <ArrowDown className="h-4 w-4 transition-transform group-hover:translate-y-0.5" />
                             </a>
 
@@ -69,7 +71,7 @@ export default function Hero() {
                                 className="inline-flex items-center gap-2 border border-cyan/40 px-6 py-3 font-hud uppercase tracking-wide text-paper transition-colors hover:border-cyan hover:text-cyan [clip-path:polygon(0_8px,8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%)]"
                             >
                                 <Download className="h-4 w-4" />
-                                Descargar CV
+                                {t('hero.downloadCv')}
                             </a>
                         </div>
 

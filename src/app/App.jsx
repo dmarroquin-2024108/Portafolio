@@ -11,12 +11,13 @@ import Projects from '../components/Projects.jsx'
 import Contact from '../components/Contact.jsx'
 import Footer from '../components/Footer.jsx'
 import { Reveal } from '../components/Reveal.jsx'
+import { LanguageProvider } from '../context/LanguageContext.jsx'
 
 export default function App() {
   const [loading, setLoading] = useState(true)
 
   return (
-    <>
+    <LanguageProvider>
       {loading && <Preloader onDone={() => setLoading(false)} />}
       <div className={`min-h-screen bg-navy transition-opacity duration-500 ${loading ? 'opacity-0' : 'opacity-100'}`}>
         <Sidebar />
@@ -34,6 +35,6 @@ export default function App() {
           <Footer />
         </div>
       </div>
-    </>
+    </LanguageProvider>
   )
 }

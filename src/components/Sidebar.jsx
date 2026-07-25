@@ -3,24 +3,28 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { Home, User, Radar, Zap, LayoutGrid, Mail, Menu, X } from 'lucide-react'
 import { FaGithub, FaLinkedin } from 'react-icons/fa6'
 import Logo from './Logo.jsx'
+import { LanguageToggle } from './ThemeLangControls.jsx'
 import useActiveSection from '../hooks/useActiveSection.js'
 import { profile } from '../data/portafolio.js'
+import { useLanguage } from '../context/LanguageContext.jsx'
 
-const links = [
-    { href: '#home', label: 'inicio', icon: Home },
-    { href: '#about', label: 'sobre mí', icon: User },
-    { href: '#skills', label: 'stack', icon: Radar },
-    { href: '#experience', label: 'experiencia', icon: Zap },
-    { href: '#showcase', label: 'proyectos', icon: LayoutGrid },
-    { href: '#contact', label: 'contacto', icon: Mail }
+const navConfig = [
+    { href: '#home', key: 'home', icon: Home },
+    { href: '#about', key: 'about', icon: User },
+    { href: '#skills', key: 'skills', icon: Radar },
+    { href: '#experience', key: 'experience', icon: Zap },
+    { href: '#showcase', key: 'showcase', icon: LayoutGrid },
+    { href: '#contact', key: 'contact', icon: Mail }
 ]
 
-const sectionIds = links.map((l) => l.href.slice(1))
+const sectionIds = navConfig.map((l) => l.href.slice(1))
 
 export default function Sidebar() {
     const [open, setOpen] = useState(false)
     const [progress, setProgress] = useState(0)
     const activeId = useActiveSection(sectionIds)
+    const { t } = useLanguage()
+    const links = navConfig.map((l) => ({ ...l, label: t(`nav.${l.key}`) }))
 
     useEffect(() => {
         function onScroll() {
@@ -83,6 +87,7 @@ export default function Sidebar() {
                 </nav>
 
                 <div className="flex flex-col items-center gap-4">
+                    <LanguageToggle />
                     <div className="flex flex-col items-center gap-3 text-muted">
                         <a href={profile.social.github} target="_blank" rel="noreferrer" aria-label="GitHub" className="hover:text-cyan transition-colors">
                             <FaGithub className="h-4 w-4" />
@@ -105,13 +110,16 @@ export default function Sidebar() {
                 <a href="#home" aria-label="Inicio">
                     <Logo />
                 </a>
-                <button
-                    onClick={() => setOpen(true)}
-                    aria-label="Abrir menú"
-                    className="flex h-9 w-9 items-center justify-center border border-cyan/40 text-cyan [clip-path:polygon(0_8px,8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%)]"
-                >
-                    <Menu className="h-4 w-4" />
-                </button>
+                <div className="flex items-center gap-2">
+                    <LanguageToggle />
+                    <button
+                        onClick={() => setOpen(true)}
+                        aria-label="Abrir menú"
+                        className="flex h-9 w-9 items-center justify-center border border-cyan/40 text-cyan [clip-path:polygon(0_8px,8px_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%)]"
+                    >
+                        <Menu className="h-4 w-4" />
+                    </button>
+                </div>
             </header>
 
             <AnimatePresence>

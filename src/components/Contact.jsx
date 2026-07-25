@@ -4,30 +4,32 @@ import { FaLinkedin } from 'react-icons/fa6'
 import { profile } from '../data/portafolio.js'
 import SectionHeader from './SectionHeader.jsx'
 import HudPanel from './HudPanel.jsx'
+import { useLanguage } from '../context/LanguageContext.jsx'
 
 const initialForm = { name: '', email: '', message: '', company: '' }
 
-const networks = [
-    {
-        key: 'linkedin',
-        label: 'LinkedIn',
-        icon: FaLinkedin,
-        url: profile.social.linkedin,
-        description: 'Conecta conmigo profesionalmente'
-    },
-    {
-        key: 'computrabajo',
-        label: 'CompuTrabajo',
-        icon: Briefcase,
-        url: profile.social.computrabajo,
-        description: 'Revisa mi perfil laboral'
-    }
-]
-
 export default function Contact() {
+    const { t, lang } = useLanguage()
     const [form, setForm] = useState(initialForm)
     const [status, setStatus] = useState('idle')
     const [errorMsg, setErrorMsg] = useState('')
+
+    const networks = [
+        {
+            key: 'linkedin',
+            label: 'LinkedIn',
+            icon: FaLinkedin,
+            url: profile.social.linkedin,
+            description: t('contact.linkedinDesc')
+        },
+        {
+            key: 'computrabajo',
+            label: 'CompuTrabajo',
+            icon: Briefcase,
+            url: profile.social.computrabajo,
+            description: t('contact.computrabajoDesc')
+        }
+    ]
 
     function handleChange(e) {
         setForm((f) => ({ ...f, [e.target.name]: e.target.value }))
@@ -56,14 +58,13 @@ export default function Contact() {
     }
 
     return (
-        <section id="contact" className="py-20">
-            <SectionHeader index={7} title="Conexión & redes" id="contact" subtitle="Hablemos de tu próximo proyecto" />
+        <section id="contact" className="py-10">
+            <SectionHeader index={7} title={t('contact.title')} id="contact" subtitle={t('contact.subtitle')} />
 
             <div className="grid lg:grid-cols-2 gap-6">
                 <div className="space-y-6">
                     <p className="text-muted leading-relaxed max-w-md">
-                        ¿Tienes una idea, una vacante o simplemente quieres saludar? Escríbeme y te
-                        respondo lo antes posible.
+                        {t('contact.intro')}
                     </p>
 
                     <div className="grid sm:grid-cols-2 gap-4">
@@ -87,17 +88,17 @@ export default function Contact() {
                             <Mail className="h-4 w-4" /> {profile.email}
                         </a>
                         <p className="flex items-center gap-3 text-sm text-muted">
-                            <MapPin className="h-4 w-4" /> {profile.location}
+                            <MapPin className="h-4 w-4" /> {profile.location[lang]}
                         </p>
                     </div>
                 </div>
 
                 <HudPanel className="p-6" accent>
-                    <p className="font-hud text-xs uppercase tracking-[0.25em] text-cyan mb-5">Envía un mensaje</p>
+                    <p className="font-hud text-xs uppercase tracking-[0.25em] text-cyan mb-5">{t('contact.formTitle')}</p>
                     <form onSubmit={handleSubmit} className="relative space-y-4">
                         {/* Honeypot: oculto para personas, visible para bots. */}
                         <div className="absolute -left-[9999px] opacity-0" aria-hidden="true">
-                            <label htmlFor="company">No llenar este campo</label>
+                            <label htmlFor="company">{t('contact.honeypot')}</label>
                             <input
                                 id="company"
                                 name="company"
@@ -109,7 +110,7 @@ export default function Contact() {
                             />
                         </div>
                         <div>
-                            <label htmlFor="name" className="block font-hud text-xs uppercase tracking-wide text-muted mb-1.5">nombre</label>
+                            <label htmlFor="name" className="block font-hud text-xs uppercase tracking-wide text-muted mb-1.5">{t('contact.name')}</label>
                             <input
                                 id="name"
                                 name="name"
@@ -117,11 +118,11 @@ export default function Contact() {
                                 value={form.name}
                                 onChange={handleChange}
                                 className="w-full border border-border bg-navy-deep px-3 py-2.5 text-paper placeholder:text-muted/50 focus:border-cyan outline-none"
-                                placeholder="Ada Lovelace"
+                                placeholder={t('contact.namePlaceholder')}
                             />
                         </div>
                         <div>
-                            <label htmlFor="email" className="block font-hud text-xs uppercase tracking-wide text-muted mb-1.5">email</label>
+                            <label htmlFor="email" className="block font-hud text-xs uppercase tracking-wide text-muted mb-1.5">{t('contact.email')}</label>
                             <input
                                 id="email"
                                 type="email"
@@ -130,11 +131,11 @@ export default function Contact() {
                                 value={form.email}
                                 onChange={handleChange}
                                 className="w-full border border-border bg-navy-deep px-3 py-2.5 text-paper placeholder:text-muted/50 focus:border-cyan outline-none"
-                                placeholder="ada@ejemplo.com"
+                                placeholder={t('contact.emailPlaceholder')}
                             />
                         </div>
                         <div>
-                            <label htmlFor="message" className="block font-hud text-xs uppercase tracking-wide text-muted mb-1.5">mensaje</label>
+                            <label htmlFor="message" className="block font-hud text-xs uppercase tracking-wide text-muted mb-1.5">{t('contact.message')}</label>
                             <textarea
                                 id="message"
                                 name="message"
@@ -143,7 +144,7 @@ export default function Contact() {
                                 value={form.message}
                                 onChange={handleChange}
                                 className="w-full border border-border bg-navy-deep px-3 py-2.5 text-paper placeholder:text-muted/50 focus:border-cyan outline-none resize-none"
-                                placeholder="Cuéntame sobre tu proyecto..."
+                                placeholder={t('contact.messagePlaceholder')}
                             />
                         </div>
 
@@ -154,24 +155,24 @@ export default function Contact() {
                         >
                             {status === 'loading' ? (
                                 <>
-                                    <Loader2 className="h-4 w-4 animate-spin" /> Enviando...
+                                    <Loader2 className="h-4 w-4 animate-spin" /> {t('contact.sending')}
                                 </>
                             ) : (
                                 <>
-                                    <Send className="h-4 w-4" /> Enviar mensaje
+                                    <Send className="h-4 w-4" /> {t('contact.send')}
                                 </>
                             )}
                         </button>
 
                         {status === 'success' && (
                             <p className="flex items-center gap-2 text-cyan text-xs">
-                                <CheckCircle2 className="h-4 w-4" /> Mensaje enviado. ¡Gracias!
+                                <CheckCircle2 className="h-4 w-4" /> {t('contact.success')}
                             </p>
                         )}
                         {status === 'error' && (
                             <p className="flex items-center gap-2 text-red-400 text-xs">
                                 <XCircle className="h-4 w-4" />
-                                {errorMsg || 'Algo falló. Intenta de nuevo o escríbeme directo por correo.'}
+                                {errorMsg || t('contact.errorDefault')}
                             </p>
                         )}
                     </form>
