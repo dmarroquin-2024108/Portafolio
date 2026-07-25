@@ -88,13 +88,16 @@ export const education = [
 // level: 0-100, usado en la gráfica radar de habilidades
 export const skills = [
     { name: 'React', level: 80, category: { es: 'Frontend', en: 'Frontend' } },
-    { name: 'Node.js ', level: 85, category: { es: 'Backend', en: 'Backend' } },
-    { name: 'JavaScript / Java', level: 77, category: { es: 'Lenguaje', en: 'Language' } },
-    { name: 'MongoDB / SQL', level: 75, category: { es: 'Base de datos', en: 'Database' } },
+    { name: 'Node.js ', level: 75, category: { es: 'Backend', en: 'Backend' } },
+    { name: 'JavaScript', level: 77, category: { es: 'Lenguaje', en: 'Language' } },
+    { name: 'Java', level: 75, category: { es: 'Lenguaje', en: 'Language' } },
+    { name: 'C#', level: 70, category: { es: 'Lenguaje', en: 'Language' } },
+    { name: 'MongoDB', level: 78, category: { es: 'Base de datos', en: 'Database' } },
+    { name: 'SQL', level: 75, category: { es: 'Base de datos', en: 'Database' } },
     { name: 'Tailwind CSS', level: 86, category: { es: 'Estilos', en: 'Styling' } },
     { name: 'Docker', level: 65, category: { es: 'DevOps', en: 'DevOps' } },
     { name: 'React Native', level: 70, category: { es: 'Mobile', en: 'Mobile' } },
-    { name: 'Git / GitHub', level: 87, category: { es: 'Control de versiones', en: 'Version control' } }
+    { name: 'Git / GitHub', level: 85, category: { es: 'Control de versiones', en: 'Version control' } }
 ]
 
 // showcase: solo proyectos con interfaz gráfica, para el carrusel visual

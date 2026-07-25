@@ -3,12 +3,14 @@ import {
     SiReact,
     SiNodedotjs,
     SiJavascript,
+    SiCsharp,
     SiMongodb,
     SiTailwindcss,
     SiDocker,
     SiGit
 } from 'react-icons/si'
-import { Smartphone } from 'lucide-react'
+import { FaJava } from 'react-icons/fa6'
+import { Smartphone, Database } from 'lucide-react'
 import { skills } from '../data/portafolio.js'
 import SectionHeader from './SectionHeader.jsx'
 import HudPanel from './HudPanel.jsx'
@@ -18,8 +20,11 @@ const iconMap = [
     { match: /react native/i, icon: Smartphone },
     { match: /react/i, icon: SiReact },
     { match: /node/i, icon: SiNodedotjs },
-    { match: /javascript|ts/i, icon: SiJavascript },
-    { match: /mongo|sql/i, icon: SiMongodb },
+    { match: /javascript|typescript/i, icon: SiJavascript },
+    { match: /java/i, icon: FaJava },
+    { match: /c#/i, icon: SiCsharp },
+    { match: /mongo/i, icon: SiMongodb },
+    { match: /sql/i, icon: Database },
     { match: /tailwind/i, icon: SiTailwindcss },
     { match: /docker/i, icon: SiDocker },
     { match: /git/i, icon: SiGit }
